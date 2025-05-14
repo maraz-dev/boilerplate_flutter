@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_flutter/app.dart';
 import 'package:boilerplate_flutter/core/di/injector.dart';
@@ -27,7 +27,7 @@ void main() {
     await initializeCore(environment: env);
 
     // Initialize the .env Environments
-    await dotenv.load(fileName: ".env");
+    //await dotenv.load(fileName: ".env");
 
     final HiveStorageBase initializeStorageService = HiveStorageService();
     await initializeStorageService.init();
