@@ -1,11 +1,11 @@
 import 'dart:developer';
 
+import 'package:boilerplate_flutter/navigation_service.dart';
 import 'package:boilerplate_flutter/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_flutter/main.dart';
-import 'package:boilerplate_flutter/view/route.dart';
 import 'package:boilerplate_flutter/view/theme/app_theme.dart';
 import 'package:boilerplate_flutter/view/utils/session-manager/session_timeout_manager.dart';
 import 'package:boilerplate_flutter/view/utils/session-manager/vm/app_session_vm.dart';
@@ -64,7 +64,6 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final appRouteProvider = ref.watch(routeProvider);
     final appSession = ref.watch(appSessionProvider);
 
     return GestureDetector(
@@ -80,12 +79,12 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
             return SessionTimeoutManager(
               sessionConfig: appSession,
               sessionStateStream: ref.watch(sessionStateProvider).stream,
-              child: MaterialApp.router(
+              child: MaterialApp(
                 title: "APP_NAME",
+                navigatorKey: NavigationService.instance.navigatorKey,
                 debugShowCheckedModeBanner: false,
                 theme: themeData(),
                 key: navigatorKey,
-                routerConfig: appRouteProvider,
                 builder: (context, child) {
                   return MediaQuery(
                     data:

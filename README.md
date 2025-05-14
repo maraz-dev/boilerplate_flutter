@@ -6,6 +6,8 @@ A Flutter Boilerplate Project.
 
 This project is basically a SKELETON for Flutter projects instead of building from scratch.
 
+> Change the **APP_NAME** in `app.dart`
+
 ### State Management
 > The State management in this project is **Riverpod**, but you can easily change it if you want. **(Make sure to edit the `Dependency Injection` file)**.
 
