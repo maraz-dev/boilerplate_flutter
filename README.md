@@ -6,7 +6,7 @@ A Flutter Boilerplate Project.
 
 This project is basically a SKELETON for Flutter projects instead of building from scratch.
 
-> Change the **APP_NAME** in `app.dart`
+> Change the **APP_NAME** in `app.dart`, `AndroidManifest.xml(Android)` and `project.pbxproj(iOS)`. You can easily run a **FIND AND REPLACE** to change the  **APP_NAME**.
 
 ### State Management
 > The State management in this project is **Riverpod**, but you can easily change it if you want. **(Make sure to edit the `Dependency Injection` file)**.
