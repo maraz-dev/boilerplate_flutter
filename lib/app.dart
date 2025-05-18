@@ -1,14 +1,15 @@
 import 'dart:developer';
 
-import 'package:boilerplate_flutter/navigation_service.dart';
+import 'package:boilerplate_flutter/view/route/navigation_service.dart';
 import 'package:boilerplate_flutter/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:boilerplate_flutter/main.dart';
 import 'package:boilerplate_flutter/view/theme/app_theme.dart';
 import 'package:boilerplate_flutter/view/utils/session-manager/session_timeout_manager.dart';
 import 'package:boilerplate_flutter/view/utils/session-manager/vm/app_session_vm.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends ConsumerStatefulWidget {
   final String env;

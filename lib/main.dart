@@ -11,8 +11,6 @@ import 'package:boilerplate_flutter/core/storage/hive-storage/hive_storage_servi
 import 'package:boilerplate_flutter/core/third-party/environment.dart';
 import 'package:boilerplate_flutter/core/utils/logger.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 EventBus eventBus = EventBus();
 
 void main() {
