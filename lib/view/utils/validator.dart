@@ -1,3 +1,7 @@
+bool validateRequiredFields(List fields) {
+  return !fields.any((field) => field.isEmpty);
+}
+
 String? validatePassword(String? value) {
   if (value!.isEmpty) {
     return 'Field cannot be Empty';
@@ -17,8 +21,7 @@ String? confirmPassword(String? value, String confirmPass) {
 }
 
 String? validateEmail(String? value) {
-  const String pattern =
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+  const String pattern = r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
       r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
       r"{0,253}[a-zA-Z0-9])?)*$";
   final RegExp regex = RegExp(pattern);
@@ -85,10 +88,7 @@ bool isStrongPassword(String password) {
   final isMinimumLength = password.length >= 8;
 
   // Combine all conditions
-  return hasUppercaseLetter &&
-      hasLowercaseLetter &&
-      hasSymbol &&
-      isMinimumLength;
+  return hasUppercaseLetter && hasLowercaseLetter && hasSymbol && isMinimumLength;
 }
 
 bool has8Characters(String field) {
