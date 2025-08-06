@@ -86,6 +86,7 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
                 debugShowCheckedModeBanner: false,
                 theme: themeData(),
                 key: navigatorKey,
+                home: Container(),
                 builder: (context, child) {
                   return MediaQuery(
                     data:
