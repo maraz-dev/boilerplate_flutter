@@ -20,8 +20,8 @@ extension ThemeExtensions on BuildContext {
   Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
 
   /// Get app bar theme
-  AppBarTheme get appBarTheme => Theme.of(this).appBarTheme;
+  AppBarThemeData get appBarTheme => Theme.of(this).appBarTheme;
 
   /// Get input decoration theme
-  InputDecorationTheme get inputDecorationTheme => Theme.of(this).inputDecorationTheme;
+  InputDecorationThemeData get inputDecorationTheme => Theme.of(this).inputDecorationTheme;
 }
