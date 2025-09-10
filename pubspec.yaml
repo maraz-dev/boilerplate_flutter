@@ -34,6 +34,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   flutter_skeleton_ui: ^0.0.6
   flutter_spinkit: ^5.2.0
+  flutter_styled_toast: ^2.2.1
   flutter_svg: ^2.0.9
   fluttertoast: ^8.2.4
   geocoding: ^3.0.0

@@ -1,104 +1,63 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/material.dart';
 import 'package:boilerplate_flutter/view/theme/app_colors.dart';
+import 'package:boilerplate_flutter/view/theme/theme_extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
-class SnackBarDialog {
+class ToastDialog {
   /// Function to display error message of value [message] in a [context] and
   /// an optional function [where] to do after displaying message
-  static showErrorFlushBarMessage(String message, BuildContext context,
-      {bool shouldDismiss = true, Function? where}) {
-    bool opened = true;
-    showGeneralDialog(
-        context: context,
-        barrierDismissible: true,
-        useRootNavigator: false,
-        barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        transitionDuration: const Duration(milliseconds: 100),
-        pageBuilder:
-            (BuildContext buildContext, Animation animation, Animation secondaryAnimation) {
-          if (shouldDismiss) {
-            Future.delayed(const Duration(milliseconds: 2500), () {
-              if (opened) {
-                Navigator.of(buildContext, rootNavigator: false).pop();
-              }
-            }).then((value) {
-              if (where != null) where();
-            });
-          }
-          return Material(
-            type: MaterialType.transparency,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                color: AppColors.kErrorColor,
-                child: SafeArea(
-                  right: false,
-                  bottom: false,
-                  left: false,
-                  child: Text(
-                    message,
-                    textAlign: TextAlign.start,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).then((value) => opened = false);
+  static showError(
+    String message,
+    BuildContext context,
+  ) {
+    showToastWidget(
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: AppColors.kErrorColor,
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        child: Text(
+          message,
+          style: context.textTheme.bodyMedium?.copyWith(color: Colors.white),
+        ),
+      ),
+      context: context,
+      animDuration: const Duration(milliseconds: 200),
+      duration: const Duration(seconds: 3),
+      position: StyledToastPosition.top,
+      animation: StyledToastAnimation.slideToTopFade,
+      reverseAnimation: StyledToastAnimation.fade,
+    );
   }
 
   /// Function to display error message of value [message] in a [context] and
   /// an optional function [where] to do after displaying message
-  static showSuccessFlushBarMessage(String message, BuildContext context,
-      {bool shouldDismiss = true, Function? where}) {
-    bool opened = true;
-    showGeneralDialog(
-        context: context,
-        barrierDismissible: true,
-        useRootNavigator: false,
-        barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        transitionDuration: const Duration(milliseconds: 100),
-        pageBuilder:
-            (BuildContext buildContext, Animation animation, Animation secondaryAnimation) {
-          if (shouldDismiss) {
-            Future.delayed(const Duration(milliseconds: 2500), () {
-              if (opened) {
-                Navigator.of(buildContext, rootNavigator: false).pop();
-              }
-            }).then((value) {
-              if (where != null) where();
-            });
-          }
-          return Material(
-            type: MaterialType.transparency,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                color: AppColors.kSuccessColor,
-                child: SafeArea(
-                  right: false,
-                  bottom: false,
-                  left: false,
-                  child: Text(
-                    message,
-                    textAlign: TextAlign.start,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).then((value) => opened = false);
+  static showSuccess(
+    String message,
+    BuildContext context,
+  ) {
+    showToastWidget(
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: AppColors.kSuccessColor,
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        child: Text(
+          message,
+          style: context.textTheme.bodyMedium?.copyWith(color: Colors.white),
+        ),
+      ),
+      context: context,
+      animDuration: const Duration(milliseconds: 200),
+      position: StyledToastPosition.top,
+      animation: StyledToastAnimation.slideToTopFade,
+      reverseAnimation: StyledToastAnimation.fade,
+    );
   }
 }
